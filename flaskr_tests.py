@@ -21,8 +21,7 @@ class FlaskrTestCase(unittest.TestCase):
         self.db_fd, flaskr.app.config['DATABASE'] = tempfile.mkstemp()
         flaskr.app.config['TESTING'] = True
         self.app = flaskr.app.test_client()
-        with flaskr.app.app_context():
-            flaskr.init_db()
+        flaskr.init_db()
 
     def tearDown(self):
         """Get rid of the database again after each test."""
